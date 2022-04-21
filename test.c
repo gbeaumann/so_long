@@ -14,6 +14,9 @@ typedef	struct	s_data
 	void	*mlx_win;
 	int		x;
 	int		y;
+	//void	*sprite;
+	//int		img_width;
+	//int		img_height;
 }			t_data;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -38,19 +41,12 @@ int	ft_close(int keycode, t_data *img)
 	return (0);
 }
 
-/*int	key_hook(int keycode, t_data *img)
+int	key_hook(int keycode, t_data *img)
 {
-	printf("%d\n", keycode);
-	return (0);
-}*/
-
-int	render_next_frame(t_data *img)
-{
-	static int	check = 0;
 	int			x;
 	int			y;
 
-	if (img->mlx != NULL && check == 0)
+	if (img->mlx != NULL && keycode == 13)
 	{
 		y = 0;
 		while (y < 600)
@@ -64,11 +60,9 @@ int	render_next_frame(t_data *img)
 			y++;
 		}
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
-		check = 1;
-		sleep(1);
 		return (0);
 	}
-	if (img->mlx != NULL && check == 1)
+	else if (img->mlx != NULL && keycode == 0)
 	{
 		img->y = 0;
 		while (img->y < 600)
@@ -82,11 +76,9 @@ int	render_next_frame(t_data *img)
 			img->y++;
 		}
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
-		check = 2;
-		sleep(1);
 		return (0);
 	}
-	if (img->mlx != NULL && check == 2)
+	else if (img->mlx != NULL && keycode == 1)
 	{
 		img->y = 0;
 		while (img->y < 600)
@@ -100,8 +92,83 @@ int	render_next_frame(t_data *img)
 			img->y++;
 		}
 		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
-		check = 0;
-		sleep(1);
+		return (0);
+	}
+	else if (img->mlx != NULL && keycode == 2)
+	{
+		img->y = 0;
+		while (img->y < 600)
+		{
+			img->x = 0;
+			while (img->x < 800)
+			{
+				my_mlx_pixel_put(img, img->x, img->y, 0x0000ffff);
+				img->x++;
+			}
+			img->y++;
+		}
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
+		return (0);
+	}
+	return (0);
+}
+
+int	render_next_frame(t_data *img)
+{
+	//static int	check = 0;
+	int			x;
+	int			y;
+
+	//usleep(500000);
+	if (img->mlx != NULL && (mlx_key_hook(img->mlx_win, key_hook, &img) == 13))
+	{
+		y = 0;
+		while (y < 600)
+		{
+			x = 0;
+			while (x < 800)
+			{
+				my_mlx_pixel_put(img, x, y, 0x00ff0000);
+				x++;
+			}
+			y++;
+		}
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
+		//check = 1;
+		return (0);
+	}
+	else if (img->mlx != NULL && (mlx_key_hook(img->mlx_win, key_hook, &img) == 0))
+	{
+		img->y = 0;
+		while (img->y < 600)
+		{
+			img->x = 0;
+			while (img->x < 800)
+			{
+				my_mlx_pixel_put(img, img->x, img->y, 0x0000ff00);
+				img->x++;
+			}
+			img->y++;
+		}
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
+		//check = 2;
+		return (0);
+	}
+	else if (img->mlx != NULL && (mlx_key_hook(img->mlx_win, key_hook, &img) == 1))
+	{
+		img->y = 0;
+		while (img->y < 600)
+		{
+			img->x = 0;
+			while (img->x < 800)
+			{
+				my_mlx_pixel_put(img, img->x, img->y, 0x000000ff);
+				img->x++;
+			}
+			img->y++;
+		}
+		mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
+		//check = 0;
 		return (0);
 	}
 	return (0);
@@ -110,15 +177,22 @@ int	render_next_frame(t_data *img)
 int	main(void)
 {
 	t_data	img;
+	char	*relative_path = "./asset/sprites/link_front.xpm";
+	void	*sprite;
+	int		img_width;
+	int		img_height;
 
+	//img.img_height = 52;
+	//img.img_width = 52;
 	img.mlx = mlx_init();
 	img.mlx_win = mlx_new_window(img.mlx, 800, 600, "test");
 	img.img = mlx_new_image(img.mlx, 800, 600);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	mlx_loop_hook(img.mlx, render_next_frame, &img);
-	//mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
+	sprite = mlx_xpm_file_to_image(img.mlx, relative_path, &img_width, &img_height);
+	//mlx_key_hook(img.mlx_win, key_hook, &img);
+	//mlx_loop_hook(img.mlx, render_next_frame, &img);
+	mlx_put_image_to_window(img.mlx, img.mlx_win, sprite, 50, 50);
 	mlx_hook(img.mlx_win, 2, 1L<<0, ft_close, &img);
 	mlx_hook(img.mlx_win, 17, 1L<<5, clic_close, &img);
-	//mlx_key_hook(img.mlx_win, key_hook, &img);
 	mlx_loop(img.mlx);
 }
