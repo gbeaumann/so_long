@@ -64,10 +64,9 @@ static char *ft_join(char *str, char ch)
 
 char *get_next_line(int fd, t_read_map *gnl)
 {
-	//static t_read_map	gnl;
-	char				ch;
-	char				*str;
-	int					index;
+	char	ch;
+	char	*str;
+	int		index;
 
 	index = 0;
 	str = NULL;

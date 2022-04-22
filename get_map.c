@@ -6,12 +6,12 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:41:04 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/21 11:14:02 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/22 12:27:03 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
-
+// A effacer
 static char 	*map_filling(char *map_gnl, t_read_map *gnl)
 {
 	char			*line;
