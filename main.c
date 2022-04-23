@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 09:26:39 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/22 11:41:33 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/23 21:10:42 by gregoirebea      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 	img.mlx = mlx_init();
 	fd = open("map_test.ber", O_RDONLY);
 	map_gnl = get_next_line(fd, &gnl);
-	img.mlx_window = mlx_new_window(img.mlx, (gnl.width * 52), ((gnl.height) * 52), "test");
+	img.mlx_window = mlx_new_window(img.mlx, (gnl.width * 52), (gnl.height * 52), "test");
 	//img.img = mlx_new_image(img.mlx, (gnl.width * 52), (gnl.height * 52));
 	//img.addr = mlx_get_data_addr(img.img, &img.bit_per_pixel, &img.line_length, &img.endian);
 	//get_map(&gnl, &img, map_gnl); a effacer
