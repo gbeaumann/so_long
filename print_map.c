@@ -35,7 +35,7 @@ static void	print_walls(t_data *img, int index_height, int index_width, int x, i
 	}
 }
 
-static void	print_sprite(t_data *img, int index_height, int index_width)
+void	print_sprite(t_data *img, int index_height, int index_width)
 {
 	if (img->map[index_height][index_width] == '1')
 		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/herbs.xpm", &img->img_height, &img->img_height);
@@ -48,7 +48,7 @@ static void	print_sprite(t_data *img, int index_height, int index_width)
 	else if (img->map[index_height][index_width] == 'E')
 		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/exit.xpm", &img->img_height, &img->img_height);
 }
-void	print_map(t_data *img)
+void	print_map(t_data *img, t_find_player *player)
 {
 	int	index_height;
 	int	index_width;
@@ -59,6 +59,7 @@ void	print_map(t_data *img)
 	y = 52;
 	index_height = 1;
 	index_width = 1;
+	
 	print_walls(img, index_height, index_width, x, y);
 	while (index_height < img->height - 1)
 	{
@@ -74,4 +75,5 @@ void	print_map(t_data *img)
 		index_width = 1;
 		index_height++;
 	}
+	//mlx_key_hook(img->mlx_window, player_movement, img);
 }

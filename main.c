@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 09:26:39 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/26 14:18:58 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/26 18:58:51 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(void)
 {
 	static t_read_map	gnl = {.fd = -1};
 	t_data				img;
+	t_find_player		player;
 	int					fd;
 	char				*map_gnl;
 	int	i;
@@ -32,10 +33,11 @@ int	main(void)
 	//get_map(&gnl, &img, map_gnl); a effacer
 	img.map = ft_split(map_gnl, '\n');
 	check_error(&img, &gnl, map_gnl);
-	print_map(&img);
+	print_map(&img, &player);
 	//ft_printf ("test_main\n");
 	//mlx_loop_hook(img.mlx_window, player_movement, &img);
-	// ("test_main2\n");
+	//ft_printf ("test_main2\n");
+	mlx_key_hook(img.mlx_window, player_movement, &img);
 	mlx_hook(img.mlx_window, 2, 1L<<0, ft_close, &img);
 	mlx_hook(img.mlx_window, 17, 1L<<5, ft_clic_close, &img);
 	mlx_loop(img.mlx);
