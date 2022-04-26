@@ -6,6 +6,7 @@ SRC =	get_next_line.c\
 		print_map.c\
 		check_error.c\
 		check_error_2.c\
+		player_movement.c\
 		main.c
 FLAGS =	-Wall -Werror -Wextra
 OBJ =	$(SRC:.c=.o)

@@ -6,13 +6,13 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 14:41:04 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/22 12:27:03 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/26 14:06:00 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
 // A effacer
-static char 	*map_filling(char *map_gnl, t_read_map *gnl)
+/*static char 	*map_filling(char *map_gnl, t_read_map *gnl)
 {
 	char			*line;
 	static int		index_gnl = 0;
@@ -56,4 +56,4 @@ char	**get_map(t_read_map *gnl, t_data *img, char *map_gnl)
 	}
 	//ft_printf("%c\n", &img->map[0][0]);
 	return (img->map);
-}
+}*/

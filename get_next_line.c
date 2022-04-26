@@ -62,11 +62,13 @@ static char *ft_join(char *str, char ch)
 	return (new_str);
 }
 
-char *get_next_line(int fd, t_read_map *gnl)
+char *get_next_line(int fd, t_read_map *gnl, t_data *img)
 {
 	char	ch;
 	char	*str;
 	int		index;
+	static int	width = 0;
+	static int	height = 0;
 
 	index = 0;
 	str = NULL;
@@ -79,15 +81,17 @@ char *get_next_line(int fd, t_read_map *gnl)
 	while (ch)
 	{
 			if (ch == '\n')
-			gnl->height++;
+			height++;
 		str = ft_join(str, ch);
 		ch = check_read(gnl);
 	}
 	while (str[index] != '\n')
 	{
-		gnl->width++;
+		width++;
 		index++;
 	}
-	gnl->height++;
+	height++;
+	img->width = width;
+	img->height = height;
 	return (str);
 }

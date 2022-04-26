@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:17:27 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/22 13:37:34 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/26 14:04:28 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	error_walls(void)
 	exit (0);
 }
 
-static void	check_walls(t_data *img, t_read_map *gnl)
+static void	check_walls(t_data *img)
 {
 	int	ht;
 	int	len;
@@ -67,9 +67,9 @@ static void	check_walls(t_data *img, t_read_map *gnl)
 		len++;
 	}
 	ht++;
-	while (ht < gnl->height - 1)
+	while (ht < img->height - 1)
 	{
-		if (img->map[ht][0] != '1' || img->map[ht][gnl->width - 1] != '1')
+		if (img->map[ht][0] != '1' || img->map[ht][img->width - 1] != '1')
 			error_walls();
 		ht++;
 	}
@@ -85,7 +85,7 @@ static void	check_walls(t_data *img, t_read_map *gnl)
 void	check_error(t_data *img, t_read_map *gnl, char *map_gnl)
 {
 	check_map_size(img, map_gnl);
-	check_walls(img, gnl);
+	check_walls(img);
 	check_player(map_gnl);
 	check_exit(map_gnl);
 }
