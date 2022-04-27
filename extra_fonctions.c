@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   extra_fonctions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 14:34:35 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/27 11:18:27 by gbeauman         ###   ########.fr       */
+/*   Created: 2022/04/27 09:45:34 by gbeauman          #+#    #+#             */
+/*   Updated: 2022/04/27 14:06:50 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"so_long.h"
 
-int ft_clic_close(t_data *img)
+int	count_coins(char *gnl_map)
 {
-	mlx_destroy_window(img->mlx, img->mlx_window);
-	exit (0);
+	int	index;
+	int	coins;
+
+	index = 0;
+	coins = 0;
+	while (gnl_map[index])
+	{
+		if (gnl_map[index] == 'C')
+			coins++;
+		index++;
+	}
+	return (coins);
 }
 
-int	ft_close(int keycode, t_data *img)
+void	destroy_game(t_data *img)
 {
-	if (keycode == 53)
-	{
-		mlx_destroy_window(img->mlx, img->mlx_window);
-		exit(0);
-	}
-	return (0);
+	mlx_destroy_window(img->mlx, img->mlx_window);
+	exit(0);
 }

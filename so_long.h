@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:59 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/26 18:54:30 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/27 15:23:24 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ typedef struct	s_data
 	int		width;
 	int		player_height;
 	int		player_width;
+	int		coins;
+	int		exit_height;
+	int		exit_width;
+	int		move_count;
+	//char	*move;
 }			t_data;
 
 typedef struct	s_read_map
@@ -67,8 +72,12 @@ void	print_map(t_data *img, t_find_player *player);
 void	check_error(t_data *img, t_read_map *gnl, char *map_gnl);
 void	check_player(char *map_gnl);
 void	check_exit(char *map_gnl);
+void	check_coin(char *map_gnl);
 int		player_movement(int keycode, t_data *img);
 void	print_sprite(t_data *img, int index_height, int index_width);
+int		count_coins(char *gnl_map);
+int		find_exit(t_data *img);
+void	destroy_game(t_data *img);
 char	*get_next_line(int fd, t_read_map *gnl, t_data *img);
 
 #endif

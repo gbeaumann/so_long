@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:17:27 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/26 14:04:28 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/27 14:27:04 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,5 @@ void	check_error(t_data *img, t_read_map *gnl, char *map_gnl)
 	check_walls(img);
 	check_player(map_gnl);
 	check_exit(map_gnl);
+	check_coin(map_gnl);
 }

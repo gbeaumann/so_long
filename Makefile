@@ -2,11 +2,11 @@ NAME =	so_long
 CC =	gcc
 SRC =	get_next_line.c\
 		window.c\
-		get_map.c\
 		print_map.c\
 		check_error.c\
 		check_error_2.c\
 		player_movement.c\
+		extra_fonctions.c\
 		main.c
 FLAGS =	-Wall -Werror -Wextra
 OBJ =	$(SRC:.c=.o)

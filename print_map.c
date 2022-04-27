@@ -46,7 +46,9 @@ void	print_sprite(t_data *img, int index_height, int index_width)
 	else if (img->map[index_height][index_width] == 'C')
 		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/ruby.xpm", &img->img_height, &img->img_height);
 	else if (img->map[index_height][index_width] == 'E')
-		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/exit.xpm", &img->img_height, &img->img_height);
+		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/hole.xpm", &img->img_height, &img->img_height);
+	else if (img->map[index_height][index_width] == 'M')
+		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/enemy.xpm", &img->img_height, &img->img_height);
 }
 void	print_map(t_data *img, t_find_player *player)
 {

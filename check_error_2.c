@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:15:52 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/22 13:37:50 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/27 14:27:25 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,26 @@ void	check_exit(char *map_gnl)
 	if (check_e < 1)
 	{
 		ft_printf ("Error, no exit");
+		exit (0);
+	}
+}
+
+void	check_coin(char *map_gnl)
+{
+	int	index;
+	int	check_c;
+	
+	index = 0;
+	check_c = 0;
+	while (map_gnl[index])
+	{
+		if (map_gnl[index] == 'C')
+			check_c++;
+		index++;
+	}
+	if (check_c == 0)
+	{
+		ft_printf ("Error, no ruby on the map");
 		exit (0);
 	}
 }
