@@ -5,6 +5,7 @@ SRC =	get_next_line.c\
 		print_map.c\
 		check_error.c\
 		check_error_2.c\
+		check_error_3.c\
 		player_movement.c\
 		extra_fonctions.c\
 		enemies_movement.c\

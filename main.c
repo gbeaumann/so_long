@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 09:26:39 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/29 15:25:31 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/29 15:51:49 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 	t_find_player		player;
 	int					fd;
 	char				*map_gnl;
-	
+	//check v dans map
+	//check monstre vs ruby
 	if (argc != 2)
 		check_arguments();
 	img.img_height = 52;
@@ -30,10 +31,13 @@ int	main(int argc, char **argv)
 	img.move_count = 0;
 	img.mlx = mlx_init();
 	fd = open(argv[1], O_RDONLY);
+	ft_printf ("%d\n", fd);
 	if (fd < 1)
 		check_map_existance();
 	check_map_name(argv[1]);
 	map_gnl = get_next_line(fd, &gnl, &img);
+	if (!map_gnl)
+		map_empty();
 	img.coins = count_coins(map_gnl);
 	img.mlx_window = mlx_new_window(img.mlx, (img.width * 52), (img.height * 52), "so_long");
 	img.map = ft_split(map_gnl, '\n');
