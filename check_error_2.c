@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:15:52 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/27 14:27:25 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/28 11:20:59 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,10 @@ void	check_coin(char *map_gnl)
 		ft_printf ("Error, no ruby on the map");
 		exit (0);
 	}
+}
+
+void	check_arguments(void)
+{
+	ft_printf ("Error, wrong number of arguments");
+	exit (0);
 }
