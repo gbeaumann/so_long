@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:44:41 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/28 15:27:38 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/29 10:49:47 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static int emy_right(t_data *img)
 {
 	char	stock;
 	
+	if (img->map[img->emy_height][img->emy_width + 1] == 'P')
+		destroy_game(img);
 	stock = img->map[img->emy_height][img->emy_width];
 	img->map[img->emy_height][img->emy_width] = img->map[img->emy_height][img->emy_width + 1];
 	img->map[img->emy_height][img->emy_width + 1] = stock;
@@ -30,6 +32,8 @@ static int emy_left(t_data *img)
 {
 	char	stock;
 	
+	if (img->map[img->emy_height][img->emy_width - 1] == 'P')
+		destroy_game(img);
 	stock = img->map[img->emy_height][img->emy_width];
 	img->map[img->emy_height][img->emy_width] = img->map[img->emy_height][img->emy_width - 1];
 	img->map[img->emy_height][img->emy_width - 1] = stock;
@@ -53,7 +57,6 @@ void	enemies_direction(t_data *img)
 {
 	static int	direction = 0;
 	
-	//direction = 0;
 	if (img->map[img->emy_height][img->emy_width + 1] == '1' || img->map[img->emy_height][img->emy_width + 1] == 'E')
 		direction = 1;
 	else if (img->map[img->emy_height][img->emy_width - 1] == '1' || img->map[img->emy_height][img->emy_width - 1] == 'E')
@@ -63,7 +66,6 @@ void	enemies_direction(t_data *img)
 
 int	find_enemy(t_data *img)
 {
-	//int	direction = 0;
 
 	img->emy_height = 0;
 	img->emy_width = 0;
@@ -74,11 +76,6 @@ int	find_enemy(t_data *img)
 				if (img->map[img->emy_height][img->emy_width] == 'M')
 				{
 					enemies_direction(img);
-					/*if (img->map[img->emy_height][img->emy_width + 1] == '1' || img->map[img->emy_height][img->emy_width + 1] == 'E')
-						direction = 1;
-					else if (img->map[img->emy_height][img->emy_width - 1] == '1' || img->map[img->emy_height][img->emy_width - 1] == 'E')
-						direction = 0;
-					enemies_movement(img, direction);*/
 					img->emy_width++;
 				}
 				img->emy_width++;

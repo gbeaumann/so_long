@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 11:52:05 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/28 14:36:30 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/29 15:13:32 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static int player_right(t_data *img)
 		coin_collect(img);
 		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/link_right.xpm", &img->img_height, &img->img_height);
 		mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, (img->player_width + 1) * 52, img->player_height * 52);
+		find_enemy(img);
 		return (0);
 	}
 	print_sprite(img, img->player_height, img->player_width);
@@ -75,6 +76,8 @@ static int player_right(t_data *img)
 	img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/link_right.xpm", &img->img_height, &img->img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, (img->player_width + 1) * 52, img->player_height * 52);
 	find_enemy(img);
+	img->move_count++;
+	ft_printf("Move count: %d\n", img->move_count);
 	return (0);
 }
 
@@ -93,6 +96,7 @@ static int player_down(t_data *img)
 		coin_collect(img);
 		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/link_front.xpm", &img->img_height, &img->img_height);
 		mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, img->player_width * 52, (img->player_height + 1) * 52);
+		find_enemy(img);
 		return (0);
 	}
 	print_sprite(img, img->player_height, img->player_width);
@@ -100,6 +104,8 @@ static int player_down(t_data *img)
 	img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/link_front.xpm", &img->img_height, &img->img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, img->player_width * 52, (img->player_height + 1) * 52);
 	find_enemy(img);
+	img->move_count++;
+	ft_printf("Move count: %d\n", img->move_count);
 	return (0);
 }
 
@@ -118,6 +124,7 @@ static int player_left(t_data *img)
 		coin_collect(img);
 		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/link_left.xpm", &img->img_height, &img->img_height);
 		mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, (img->player_width - 1) * 52, img->player_height * 52);
+		find_enemy(img);
 		return (0);
 	}
 	print_sprite(img, img->player_height, img->player_width);
@@ -125,6 +132,8 @@ static int player_left(t_data *img)
 	img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/link_left.xpm", &img->img_height, &img->img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, (img->player_width - 1) * 52, img->player_height * 52);
 	find_enemy(img);
+	img->move_count++;
+	ft_printf("Move count: %d\n", img->move_count);
 	return (0);
 }
 
@@ -143,6 +152,7 @@ static int player_up(t_data *img)
 		coin_collect(img);
 		img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/link_back.xpm", &img->img_height, &img->img_height);
 		mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, img->player_width * 52, (img->player_height - 1) * 52);
+		find_enemy(img);
 		return (0);
 	}
 	print_sprite(img, img->player_height, img->player_width);
@@ -150,6 +160,8 @@ static int player_up(t_data *img)
 	img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/link_back.xpm", &img->img_height, &img->img_height);
 	mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, img->player_width * 52, (img->player_height - 1) * 52);
 	find_enemy(img);
+	img->move_count++;
+	ft_printf("Move count: %d\n", img->move_count);
 	return (0);
 }
 
@@ -203,6 +215,8 @@ void	monster_encounter(int keycode, t_data *img)
 
 int	player_movement(int keycode, t_data *img)
 {	
+	char	*count_move;
+
 	img->player_height = 0;
 	img->player_width = 0;
 	find_player(img);
@@ -212,16 +226,17 @@ int	player_movement(int keycode, t_data *img)
 		new_exit(img);
 		exit_window(keycode, img);
 	}
-	//find_enemy(img);
-	if (img->mlx != NULL && keycode == 2)
+	if (img->mlx != NULL && (keycode == 2 || keycode == 124))
 		player_right(img);
-	else if (img->mlx != NULL && keycode == 1)
+	else if (img->mlx != NULL && (keycode == 1 || keycode == 125))
 		player_down(img);
-	else if (img->mlx != NULL && keycode == 0)
+	else if (img->mlx != NULL && (keycode == 0 || keycode == 123))
 		player_left(img);
-	else if (img->mlx != NULL && keycode == 13)
+	else if (img->mlx != NULL && (keycode == 13 || keycode == 126))
 		player_up(img);
-	img->move_count++;
-	ft_printf("Move count: %d\n", img->move_count);
+	count_move = ft_itoa(img->move_count);
+	img->sprite = mlx_xpm_file_to_image(img->mlx, "./asset/sprites/wall.xpm", &img->img_height, &img->img_height);
+	mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, img->count_pos, 0);
+	mlx_string_put(img->mlx, img->mlx_window, img->count_pos, 30, 0x00ffff00, count_move);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:15:52 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/28 11:20:59 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/04/29 14:51:46 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,24 @@ void	check_coin(char *map_gnl)
 void	check_arguments(void)
 {
 	ft_printf ("Error, wrong number of arguments");
+	exit (0);
+}
+
+int	check_map_name(char *name)
+{
+	int	index;
+
+	index = ft_strlen(name);
+	if (name[index - 1] != 'r' && name[index - 2] != 'e' && name[index - 3] != 'b' && name[index - 4] != '.')
+	{
+		ft_printf ("Error, wrong map name");
+		exit(0);
+	}
+	return (0);
+}
+
+void	check_map_existance(void)
+{
+	ft_printf ("Error, this map doesn't exist");
 	exit (0);
 }
