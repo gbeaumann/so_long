@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:15:52 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/29 15:40:36 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:10:24 by gregoirebea      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_player(char *map_gnl)
 	}
 	if (check_p == 0 || check_p > 1)
 	{
-		ft_printf ("Error, wrong number of player");
+		ft_printf ("Error, wrong number of player\n");
 		exit (0);
 	}
 }
@@ -47,7 +47,7 @@ void	check_exit(char *map_gnl)
 	}
 	if (check_e < 1)
 	{
-		ft_printf ("Error, no exit");
+		ft_printf ("Error, no exit\n");
 		exit (0);
 	}
 }
@@ -67,14 +67,14 @@ void	check_coin(char *map_gnl)
 	}
 	if (check_c == 0)
 	{
-		ft_printf ("Error, no ruby on the map");
+		ft_printf ("Error, no ruby on the map\n");
 		exit (0);
 	}
 }
 
 void	check_arguments(void)
 {
-	ft_printf ("Error, wrong number of arguments");
+	ft_printf ("Error, wrong number of arguments\n");
 	exit (0);
 }
 
@@ -85,7 +85,7 @@ int	check_map_name(char *name)
 	index = ft_strlen(name);
 	if (name[index - 1] != 'r' && name[index - 2] != 'e' && name[index - 3] != 'b' && name[index - 4] != '.')
 	{
-		ft_printf ("Error, wrong map name");
+		ft_printf ("Error, wrong map name\n");
 		exit(0);
 	}
 	return (0);
@@ -93,6 +93,6 @@ int	check_map_name(char *name)
 
 void	check_map_existance(void)
 {
-	ft_printf ("Error, this map doesn't exist");
+	ft_printf ("Error, this map doesn't exist\n");
 	exit (0);
 }

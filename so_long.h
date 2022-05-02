@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:59 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/29 15:45:55 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:08:34 by gregoirebea      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	check_exit(char *map_gnl);
 void	check_coin(char *map_gnl);
 void	check_arguments(void);
 int		check_map_name(char *name);
+void	check_map_composition(char *map_gnl);
 int		player_movement(int keycode, t_data *img);
 void	print_sprite(t_data *img, int index_height, int index_width);
 int		count_coins(char *gnl_map);

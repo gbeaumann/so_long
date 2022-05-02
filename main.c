@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 09:26:39 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/29 15:51:49 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:59:03 by gregoirebea      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int	main(int argc, char **argv)
 	t_find_player		player;
 	int					fd;
 	char				*map_gnl;
-	//check v dans map
-	//check monstre vs ruby
 	if (argc != 2)
 		check_arguments();
 	img.img_height = 52;
@@ -31,7 +29,6 @@ int	main(int argc, char **argv)
 	img.move_count = 0;
 	img.mlx = mlx_init();
 	fd = open(argv[1], O_RDONLY);
-	ft_printf ("%d\n", fd);
 	if (fd < 1)
 		check_map_existance();
 	check_map_name(argv[1]);
@@ -46,7 +43,6 @@ int	main(int argc, char **argv)
 	img.count_pos = img.width / 2 * 52;
 	mlx_string_put(img.mlx, img.mlx_window, img.count_pos - 40, 30, 0x00ffff00, "Move: ");
 	mlx_string_put(img.mlx, img.mlx_window, img.count_pos, 30, 0x00ffff00, "0");
-	ft_printf("Move count: 0\n");
 	mlx_key_hook(img.mlx_window, player_movement, &img);
 	mlx_hook(img.mlx_window, 2, 1L<<0, ft_close, &img);
 	mlx_hook(img.mlx_window, 17, 1L<<5, ft_clic_close, &img);

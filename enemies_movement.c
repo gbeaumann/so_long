@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enemies_movement.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 11:44:41 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/29 10:49:47 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:55:51 by gregoirebea      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	enemies_movement(t_data *img, int direction)
 		emy_right(img);
 	else if (direction == 1)
 		emy_left(img);
+	else
+		return(0);
 	return (0);
 }
 
@@ -57,9 +59,17 @@ void	enemies_direction(t_data *img)
 {
 	static int	direction = 0;
 	
-	if (img->map[img->emy_height][img->emy_width + 1] == '1' || img->map[img->emy_height][img->emy_width + 1] == 'E')
+	if ((img->map[img->emy_height][img->emy_width + 1] == 'C') && (img->map[img->emy_height][img->emy_width - 1] == 'C'))
+		direction = 2;
+	else if ((img->map[img->emy_height][img->emy_width + 1] == '1') && (img->map[img->emy_height][img->emy_width - 1] == '1'))
+		direction = 2;
+	else if ((img->map[img->emy_height][img->emy_width + 1] == 'E') && (img->map[img->emy_height][img->emy_width - 1] == 'E'))
+		direction = 2;
+	else if ((img->map[img->emy_height][img->emy_width + 1] == 'M') && (img->map[img->emy_height][img->emy_width - 1] == 'M'))
+		direction = 2;
+	else if (img->map[img->emy_height][img->emy_width + 1] == '1' || img->map[img->emy_height][img->emy_width + 1] == 'E' || img->map[img->emy_height][img->emy_width + 1] == 'C')
 		direction = 1;
-	else if (img->map[img->emy_height][img->emy_width - 1] == '1' || img->map[img->emy_height][img->emy_width - 1] == 'E')
+	else if (img->map[img->emy_height][img->emy_width - 1] == '1' || img->map[img->emy_height][img->emy_width - 1] == 'E' || img->map[img->emy_height][img->emy_width - 1] == 'C')
 		direction = 0;
 	enemies_movement(img, direction);
 }

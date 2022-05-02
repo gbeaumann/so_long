@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 11:52:05 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/04/29 15:13:32 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:50:08 by gregoirebea      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	coin_collect(t_data *img)
 	print_sprite(img, img->player_height, img->player_width);
 	mlx_put_image_to_window(img->mlx, img->mlx_window, img->sprite, img->player_width * 52, img->player_height * 52);
 	img->coins--;
+	img->move_count++;
+	ft_printf("Move count: %d\n", img->move_count);
 }
 
 static int player_right(t_data *img)
@@ -162,27 +164,28 @@ static int player_up(t_data *img)
 	find_enemy(img);
 	img->move_count++;
 	ft_printf("Move count: %d\n", img->move_count);
+
 	return (0);
 }
 
 void	exit_window(int keycode, t_data *img)
 {
-	if (keycode == 2)
+	if (keycode == 2 || keycode == 124)
 	{
 		if (img->map[img->player_height][img->player_width + 1] == 'E')
 			destroy_game(img);
 	}
-	else if (keycode == 1)
+	else if (keycode == 1 || keycode == 125)
 	{
 		if (img->map[img->player_height + 1][img->player_width] == 'E')
 			destroy_game(img);
 	}
-	if (keycode == 0)
+	if (keycode == 0 || keycode == 123)
 	{
 		if (img->map[img->player_height][img->player_width - 1] == 'E')
 			destroy_game(img);
 	}
-	if (keycode == 13)
+	if (keycode == 13 || keycode == 126)
 	{
 		if (img->map[img->player_height - 1][img->player_width] == 'E')
 			destroy_game(img);
