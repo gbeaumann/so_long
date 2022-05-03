@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
+/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 10:17:27 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/05/02 18:09:08 by gregoirebea      ###   ########.fr       */
+/*   Updated: 2022/05/03 15:19:26 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ static void	check_walls(t_data *img)
 		len++;
 	}
 	ht++;
-	while (ht < img->height - 1)
+	while (ht < img->h - 1)
 	{
-		if (img->map[ht][0] != '1' || img->map[ht][img->width - 1] != '1')
+		if (img->map[ht][0] != '1' || img->map[ht][img->w - 1] != '1')
 			error_walls();
 		ht++;
 	}

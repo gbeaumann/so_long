@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 09:26:39 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/05/03 14:41:17 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/05/03 15:20:43 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ int	main(int argc, char **argv)
 	check_map_name(argv[1]);
 	map_gnl = get_next_line(fd, &gnl, &img);
 	img.coins = count_coins(map_gnl);
-	img.mlx_window = mlx_new_window(img.mlx,
-			(img.width * 52), (img.height * 52), "so_long");
+	img.mlx_win = mlx_new_window(img.mlx,
+			(img.w * 52), (img.h * 52), "so_long");
 	img.map = ft_split(map_gnl, '\n');
 	check_error(&img, &gnl, map_gnl);
 	print_map(&img);
-	img.count_pos = img.width / 2 * 52;
+	img.count_pos = img.w / 2 * 52;
 	move_count_init(&img);
-	mlx_key_hook(img.mlx_window, player_movement, &img);
-	mlx_hook(img.mlx_window, 2, 1L << 0, ft_close, &img);
-	mlx_hook(img.mlx_window, 17, 1L << 5, ft_clic_close, &img);
+	mlx_key_hook(img.mlx_win, player_movement, &img);
+	mlx_hook(img.mlx_win, 2, 1L << 0, ft_close, &img);
+	mlx_hook(img.mlx_win, 17, 1L << 5, ft_clic_close, &img);
 	mlx_loop(img.mlx);
 }

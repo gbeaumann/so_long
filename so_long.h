@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:59 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/05/03 15:06:23 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:03:39 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,26 @@ typedef struct	s_data
 	void	*img;
 	char	*addr;
 	void	*mlx;
-	void	*mlx_window;
+	void	*mlx_win;
 	char	*sprite_path;
 	void	*sprite;
 	int		bit_per_pixel;
 	int		endian;
-	int		line_length;
-	int		img_width;
-	int		img_height;
+	int		line_len;
+	int		img_w;
+	int		img_h;
 	char	**map;
-	int		height;
-	int		width;
-	int		player_height;
-	int		player_width;
+	int		h;
+	int		w;
+	int		ply_h;
+	int		ply_w;
 	int		coins;
-	int		exit_height;
-	int		exit_width;
+	int		e_h;
+	int		e_w;
 	int		move_count;
 	int		count_pos;
-	int		emy_height;
-	int		emy_width;
+	int		emy_h;
+	int		emy_w;
 }			t_data;
 
 typedef struct	s_read_map
@@ -78,6 +78,11 @@ void	check_arguments(void);
 int		check_map_name(char *name);
 void	check_map_composition(char *map_gnl);
 int		player_movement(int keycode, t_data *img);
+void	coin_collect(t_data *img);
+int		player_right(t_data *img);
+int		player_down(t_data *img);
+int		player_left(t_data *img);
+int		player_up(t_data *img);
 void	print_sprite(t_data *img, int index_height, int index_width);
 int		count_coins(char *gnl_map);
 void	destroy_game(t_data *img);
@@ -86,5 +91,10 @@ void	check_map_existance(void);
 void	map_empty(void);
 char	*get_next_line(int fd, t_read_map *gnl, t_data *img);
 void	dimention_finder(char *str, t_data *img);
+void	keycode_input(t_data *img, int keycode);
+void	collect_coin_right(t_data *img);
+void	collect_coin_down(t_data *img);
+void	collect_coin_left(t_data *img);
+void	collect_coin_up(t_data *img);
 
 #endif
