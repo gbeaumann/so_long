@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
+/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/22 12:15:52 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/05/02 18:10:24 by gregoirebea      ###   ########.fr       */
+/*   Updated: 2022/05/03 11:35:17 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	check_player(char *map_gnl)
 {
-	int	index;
+	int	i;
 	int	check_p;
-	
-	index = 0;
+
+	i = 0;
 	check_p = 0;
-	while (map_gnl[index])
+	while (map_gnl[i])
 	{
-		if (map_gnl[index] == 'P')
+		if (map_gnl[i] == 'P')
 			check_p++;
-		index++;
+		i++;
 	}
 	if (check_p == 0 || check_p > 1)
 	{
@@ -34,16 +34,16 @@ void	check_player(char *map_gnl)
 
 void	check_exit(char *map_gnl)
 {
-	int	index;
+	int	i;
 	int	check_e;
 
-	index = 0;
+	i = 0;
 	check_e = 0;
-	while (map_gnl[index])
+	while (map_gnl[i])
 	{
-		if (map_gnl[index] == 'E')
+		if (map_gnl[i] == 'E')
 			check_e++;
-		index++;
+		i++;
 	}
 	if (check_e < 1)
 	{
@@ -54,16 +54,16 @@ void	check_exit(char *map_gnl)
 
 void	check_coin(char *map_gnl)
 {
-	int	index;
+	int	i;
 	int	check_c;
-	
-	index = 0;
+
+	i = 0;
 	check_c = 0;
-	while (map_gnl[index])
+	while (map_gnl[i])
 	{
-		if (map_gnl[index] == 'C')
+		if (map_gnl[i] == 'C')
 			check_c++;
-		index++;
+		i++;
 	}
 	if (check_c == 0)
 	{
@@ -80,19 +80,14 @@ void	check_arguments(void)
 
 int	check_map_name(char *name)
 {
-	int	index;
+	int	i;
 
-	index = ft_strlen(name);
-	if (name[index - 1] != 'r' && name[index - 2] != 'e' && name[index - 3] != 'b' && name[index - 4] != '.')
+	i = ft_strlen(name);
+	if (name[i - 1] != 'r' && name[i - 2] != 'e'
+		&& name[i - 3] != 'b' && name[i - 4] != '.')
 	{
 		ft_printf ("Error, wrong map name\n");
 		exit(0);
 	}
 	return (0);
-}
-
-void	check_map_existance(void)
-{
-	ft_printf ("Error, this map doesn't exist\n");
-	exit (0);
 }

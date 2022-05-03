@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/03 11:51:01 by gbeauman          #+#    #+#             */
+/*   Updated: 2022/05/03 14:40:52 by gbeauman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include	"so_long.h"
 
 static int	init_read(int fd, t_read_map *gnl)
@@ -30,7 +42,7 @@ static char	check_read(t_read_map *gnl)
 static int	ft_len(char *str)
 {
 	int	index;
-	
+
 	index = 0;
 	if (!str)
 		return (0);
@@ -39,7 +51,7 @@ static int	ft_len(char *str)
 	return (index);
 }
 
-static char *ft_join(char *str, char ch)
+static char	*ft_join(char *str, char ch)
 {
 	char	*new_str;
 	int		index;
@@ -62,36 +74,29 @@ static char *ft_join(char *str, char ch)
 	return (new_str);
 }
 
-char *get_next_line(int fd, t_read_map *gnl, t_data *img)
+char	*get_next_line(int fd, t_read_map *gnl, t_data *img)
 {
 	char	ch;
 	char	*str;
 	int		index;
-	static int	width = 0;
-	static int	height = 0;
+	int		height;
 
 	index = 0;
+	height = 0;
 	str = NULL;
 	if (gnl->fd != fd)
 	{
 		if (!init_read(fd, gnl))
-			return (NULL);
+			map_empty();
 	}
 	ch = check_read(gnl);
 	while (ch)
 	{
-			if (ch == '\n')
+		if (ch == '\n')
 			height++;
 		str = ft_join(str, ch);
 		ch = check_read(gnl);
 	}
-	while (str[index] != '\n')
-	{
-		width++;
-		index++;
-	}
-	height++;
-	img->width = width;
-	img->height = height;
+	dimention_finder(str, img);
 	return (str);
 }

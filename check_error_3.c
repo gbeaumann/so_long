@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error_3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gregoirebeaumann <gregoirebeaumann@stud    +#+  +:+       +#+        */
+/*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:39:31 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/05/02 18:21:23 by gregoirebea      ###   ########.fr       */
+/*   Updated: 2022/05/03 11:39:14 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	check_map_composition(char *map_gnl)
 	i = 0;
 	while (map_gnl[i])
 	{
-		if (map_gnl[i] == '1' || map_gnl[i] == '0' || map_gnl[i] == 'P' || map_gnl[i] == 'M' || map_gnl[i] == 'C' || map_gnl[i] == 'E' || map_gnl[i] == '\n')
+		if (map_gnl[i] == '1' || map_gnl[i] == '0' || map_gnl[i] == 'P'
+			|| map_gnl[i] == 'M' || map_gnl[i] == 'C'
+			|| map_gnl[i] == 'E' || map_gnl[i] == '\n')
 			i++;
 		else
 		{
@@ -33,4 +35,10 @@ void	check_map_composition(char *map_gnl)
 			exit (0);
 		}
 	}
+}
+
+void	check_map_existance(void)
+{
+	ft_printf ("Error, this map doesn't exist\n");
+	exit (0);
 }
