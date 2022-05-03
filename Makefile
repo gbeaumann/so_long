@@ -1,17 +1,17 @@
 NAME =	so_long
 CC =	gcc
-SRC =	get_next_line.c\
-		window.c\
-		print_map.c\
-		check_error.c\
-		check_error_2.c\
-		check_error_3.c\
-		player_movement.c\
-		player_movement_2.c\
-		player_movement_extra.c\
-		extra_fonctions.c\
-		enemies_movement.c\
-		main.c
+SRC =	./source/get_next_line.c\
+		./source/window.c\
+		./source/print_map.c\
+		./source/check_error.c\
+		./source/check_error_2.c\
+		./source/check_error_3.c\
+		./source/player_movement.c\
+		./source/player_movement_2.c\
+		./source/player_movement_extra.c\
+		./source/extra_fonctions.c\
+		./source/enemies_movement.c\
+		./source/main.c
 FLAGS =	-Wall -Werror -Wextra
 OBJ =	$(SRC:.c=.o)
 

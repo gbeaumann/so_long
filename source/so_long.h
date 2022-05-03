@@ -6,7 +6,7 @@
 /*   By: gbeauman <gbeauman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 14:24:59 by gbeauman          #+#    #+#             */
-/*   Updated: 2022/05/03 17:03:39 by gbeauman         ###   ########.fr       */
+/*   Updated: 2022/05/03 17:31:38 by gbeauman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 # define BUFFER_SIZE 1
 
-# include	"./minilibix/mlx.h"
-# include	"./ft_printf/ft_printf.h"
-# include	"./libft/libft.h"
+# include	"../minilibix/mlx.h"
+# include	"../ft_printf/ft_printf.h"
+# include	"../libft/libft.h"
 # include	<stdlib.h>
 # include	<unistd.h>
 # include	<stdio.h>
 # include	<fcntl.h>
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -50,7 +50,7 @@ typedef struct	s_data
 	int		emy_w;
 }			t_data;
 
-typedef struct	s_read_map
+typedef struct s_read_map
 {
 	char	backup[BUFFER_SIZE];
 	int		pos;
@@ -60,8 +60,8 @@ typedef struct	s_read_map
 
 typedef struct s_find_player
 {
-	int height;
-	int width;
+	int	height;
+	int	width;
 }		t_find_player;
 
 void	init_struct(t_data *img);
