@@ -23,6 +23,14 @@ $(NAME) :	$(OBJ)
 	make -C libft
 	$(CC) $(FALGS) $(SRC) minilibix/libmlx.a ft_printf/libftprintf.a libft/libft.a -framework OpenGL -framework AppKit -o $(NAME)
 
+bonus: $(NAME)
+
+$(NAME) :	$(OBJ)
+	make -C minilibix
+	make -C ft_printf
+	make -C libft
+	$(CC) $(FALGS) $(SRC) minilibix/libmlx.a ft_printf/libftprintf.a libft/libft.a -framework OpenGL -framework AppKit -o $(NAME)
+
 clean:
 	make clean -C minilibix
 	make clean -C ft_printf
